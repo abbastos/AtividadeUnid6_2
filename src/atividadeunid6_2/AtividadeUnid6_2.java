@@ -42,7 +42,7 @@ public class AtividadeUnid6_2 {
         frmPrincipal.add(cboPolos);
 
         JLabel lblPolos = new JLabel();
-        lblPolos.setBounds(500, 30, 150, 20);
+        lblPolos.setBounds(500, 30, 250, 20);
         frmPrincipal.add(lblPolos);
 
         cboPolos.addActionListener(new ActionListener() {
@@ -50,7 +50,7 @@ public class AtividadeUnid6_2 {
             public void actionPerformed(ActionEvent e) {
                 //String lblPoloSelecionado;
                 //lblPoloSelecionado = cboPolos.getSelectedItem().toString();
-                lblPolos.setText(cboPolos.getSelectedItem().toString());
+                lblPolos.setText(cboPolos.getSelectedItem().toString() + " selecionado");
 
             }
         });
