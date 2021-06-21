@@ -31,9 +31,10 @@ public class AtividadeUnid6_2 {
         //Definição da janela principal
         JFrame frmPrincipal = new JFrame("Uso de JComboBox, Botões, Eventos e outros componentes");
         frmPrincipal.setDefaultCloseOperation(3);
-        frmPrincipal.setBounds(300, 300, 1300, 200);
+        frmPrincipal.setBounds(300, 300, 1300, 150);
         frmPrincipal.setLayout(null);
         frmPrincipal.setVisible(true);
+        
 
         //Label Selecione polo...
         JLabel lblPoloSelection = new JLabel("Selecione o seu Pólo EAD Univates: ");
@@ -83,7 +84,7 @@ public class AtividadeUnid6_2 {
         JButton btnRemover = new JButton("Remova");
         btnRemover.setBounds(1060, 30, 100, 25);
         frmPrincipal.add(btnRemover);
-/*----------------------------------Validar se polo já existe ao inserir--------------------------------------------------------------*/
+        /*----------------------------------Validar se polo já existe ao inserir--------------------------------------------------------------*/
         //Ação para botão adicionar
         btnAdicionar.addActionListener(new ActionListener() {
             @Override
@@ -91,20 +92,27 @@ public class AtividadeUnid6_2 {
 
                 String novoPolo;
                 novoPolo = tfdNovaCidade.getText();
-                
+                boolean poloExiste = false;
+                int aux;
+
                 for (int i = 0; i < cboPolos.getItemCount(); i++) {
                     if (cboPolos.getItemAt(i).toString().equals(novoPolo)) {
                         JOptionPane.showMessageDialog(null, "Polo Já existe");
-                        //tfdNovaCidade.setText("");
-                    } else {
-                        cboPolos.addItem(novoPolo);
                         tfdNovaCidade.setText("");
+                        poloExiste = true;
                     }
                 }
+
+                if (!poloExiste) {
+                    cboPolos.addItem(novoPolo);
+                    tfdNovaCidade.setText("");
+                    JOptionPane.showMessageDialog(null, "Polo adicionado a lista!");
+                }
+
             }
         });
-/*-------------------------------------------------------------------------------------------------------------------*/
-        
+        /*-------------------------------------------------------------------------------------------------------------------*/
+
         //Ação para botão Remover
         btnRemover.addActionListener(new ActionListener() {
             @Override
@@ -116,6 +124,7 @@ public class AtividadeUnid6_2 {
                     cboPolos.removeItem(cboPolos.getSelectedItem());
                     cboPolos.setSelectedIndex(0);
                     lblPolos.setText("");
+                    JOptionPane.showMessageDialog(null, "Polo Removido");
                 }
             }
         });
